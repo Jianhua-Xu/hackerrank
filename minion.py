@@ -32,11 +32,12 @@ def start_with_vowels(string):
 
 def find_occurence(string, substring):
     occurence = 0
-    for i in range(len(string)-len(substring)+1):
-        if string[i:].startswith(substring):
-            occurence += 1
-    
+    sub_len = len(substring)
+    for i in range(len(string) - len(substring) + 1):
+        if string[i:i+sub_len] == substring:
+            occurence +=1
     return occurence
+
 
 if __name__ == '__main__':
     print(f'starting...{datetime.datetime.now()}')
