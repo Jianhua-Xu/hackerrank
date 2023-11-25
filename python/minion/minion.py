@@ -1,28 +1,31 @@
 import datetime
 
+def sub_generator(string):
+    length = len(string)
+    for i in range(1, length+1):
+        for j in range(length-i+1):
+            yield string[j:i+j]
 
 def minion_game(string):
     # your code goes here
-    length = len(string)
-    sub_list = []
-    vowel_score = 0
-    consonant_score = 0
-    for i in range(1, length+1):
-        for j in range(length-i+1):
-            sub_list.append(string[j:i+j])
-    sub_list = set(sub_list)
-    print(f"sub_list has {len(sub_list)} elements. time is {datetime.datetime.now()}")
+    vowel_score = {}
+    consonant_score = {}
+    sub_list = sub_generator(string)
+    print(f"sub_list done. time is {datetime.datetime.now()}")
     for sub in sub_list:
+        score = find_occurence(string, sub)
         if start_with_vowels(sub):
-            vowel_score += find_occurence(string, sub)
+            vowel_score[sub] = score
         else:
-            consonant_score += find_occurence(string, sub)
-    if vowel_score > consonant_score:
-        print(f"Kevin {vowel_score}")
-    elif vowel_score == consonant_score:
+            consonant_score[sub] = score
+    vowels = sum(vowel_score.values())
+    consonants = sum(consonant_score.values())
+    if vowels > consonants:
+        print(f"Kevin {vowels}")
+    elif vowels == consonants:
         print("Draw")
     else:
-        print(f"Stuart {consonant_score}")
+        print(f"Stuart {consonants}")
     
     print(f"{datetime.datetime.now()}")
 
