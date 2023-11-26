@@ -3,7 +3,7 @@
 // python is way to slow if not using itertools
 
 // s:"banana"
-s: first read0 `:minion_test.txt
+s: first read0 `:minion_test_short_4.txt
 
 \t scores:count each group raze s@reverse[t1]+\:' t1:til each 1+til count s
 total_socre:sum scores

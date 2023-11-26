@@ -13,11 +13,16 @@ def minion_game(string):
     sub_list = sub_generator(string)
     print(f"sub_list done. time is {datetime.datetime.now()}")
     for sub in sub_list:
-        score = find_occurence(string, sub)
         if start_with_vowels(sub):
-            vowel_score[sub] = score
+            if sub in vowel_score:
+                vowel_score[sub] +=1
+            else:
+                vowel_score[sub] = 1
         else:
-            consonant_score[sub] = score
+            if sub in consonant_score:
+                consonant_score[sub] += 1
+            else:
+                consonant_score[sub] = 1
     vowels = sum(vowel_score.values())
     consonants = sum(consonant_score.values())
     if vowels > consonants:
