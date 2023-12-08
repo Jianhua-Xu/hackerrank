@@ -7,6 +7,7 @@ def fibonacci_1(n):
     # n == 0 or n == 1
     return(lis[0:n])
 
+
 def fibonacci_2(n):
     a,b = 0,1
     for i in range(n):
